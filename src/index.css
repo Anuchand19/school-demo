@@ -1,0 +1,398 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-brand-dark: #131E18;
+  --color-brand-forest: #1A2821;
+  --color-brand-deep: #0E1612;
+  --color-brand-cream: #FAF8F5;
+  --color-brand-cream-muted: #F5F2EA;
+  --color-brand-cream-dark: #EAE4D6;
+  --color-brand-gold: #C59A3F;
+  --color-brand-gold-hover: #B38933;
+  --color-brand-sage: #7C9283;
+  --color-brand-sage-light: #E7EDE7;
+  --color-brand-sage-border: #D1DDD2;
+  --color-brand-gray-light: #ECEAE4;
+  --color-brand-gray-mid: #9C988F;
+  --color-brand-gray-dark: #4A4742;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: #131E18;
+    background-color: #FAF8F5;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    overflow-x: hidden;
+    min-width: 320px;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Refined Keyframes for Editorial Reveal & Motion Language */
+@keyframes editorialFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleZoom {
+  0% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Scroll indicator vertical bob: 0px -> 6px -> 0px */
+@keyframes scrollBob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Editorial gold line draw from left to right */
+@keyframes drawLine {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Page fade & subtle upward slide transition */
+@keyframes pageFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Restrained input error micro-shake */
+@keyframes shakeRestrained {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-4px);
+  }
+  40%, 80% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-fade-up {
+  animation: editorialFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation: editorialFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-2 {
+  animation: editorialFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-scale-reveal {
+  animation: subtleZoom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scroll-bob {
+  animation: scrollBob 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-draw-line {
+  transform-origin: left;
+  animation: drawLine 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-page-enter {
+  animation: pageFadeSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-shake {
+  animation: shakeRestrained 0.35s ease-in-out;
+}
+
+/* Button Micro-Interactions */
+.btn-interactive {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 250ms ease, background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.btn-interactive:hover {
+  transform: translateY(-2px);
+}
+.btn-interactive:active {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+/* Two-Button Editorial System (Prompt Section 18) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.875rem;
+  min-height: 48px;
+  background-color: #131E18;
+  color: #FAF8F5;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid #131E18;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: #1A2821;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(19, 30, 24, 0.12);
+}
+.btn-primary:active {
+  transform: translateY(0.5px) scale(0.99);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.875rem;
+  min-height: 48px;
+  background-color: transparent;
+  color: #131E18;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid rgba(19, 30, 24, 0.28);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  border-color: #131E18;
+  background-color: #FAF8F5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(19, 30, 24, 0.06);
+}
+.btn-secondary:active {
+  transform: translateY(0.5px) scale(0.99);
+}
+
+/* ==================================================
+   UNIFIED IMAGE & CARD ANIMATION SYSTEM (Prompt 9-15)
+   Consistent, reversible, smooth without snapping
+   ================================================== */
+
+/* Cinematic Hero Slow Zoom (1.00 -> 1.045) */
+@keyframes heroCinematicZoom {
+  0% {
+    transform: scale(1.00) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.045) translate3d(0, -0.8%, 0);
+  }
+}
+
+.animate-hero-cinematic {
+  animation: heroCinematicZoom 18s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+  will-change: transform;
+}
+
+/* Card Interactive Hover Elevation with Smooth Symmetrical Reverse */
+.card-interactive,
+.card-sports {
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 350ms ease,
+              background-color 350ms ease;
+  will-change: transform, box-shadow;
+}
+
+.card-interactive:hover,
+.card-sports:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -8px rgba(19, 30, 24, 0.12);
+}
+
+.card-interactive:active,
+.card-sports:active {
+  transform: translateY(-1px) scale(0.995);
+}
+
+/* Unified Image Container & Inner Zoom (1.0 -> ~1.045) */
+.img-unified-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-unified,
+.img-interactive {
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.group:hover .img-unified,
+.group:hover .img-interactive,
+.card-sports:hover .img-unified,
+.card-interactive:hover .img-interactive {
+  transform: scale(1.045) translate3d(0, -2px, 0);
+}
+
+/* Unified Image Hover Overlay (Reverses seamlessly on mouse leave) */
+.img-unified-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(19, 30, 24, 0.85) 0%, rgba(19, 30, 24, 0.35) 45%, rgba(19, 30, 24, 0.05) 100%);
+  opacity: 0.65;
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.group:hover .img-unified-overlay,
+.card-sports:hover .img-unified-overlay {
+  opacity: 0.90;
+}
+
+/* Unified Card Text Motion on Hover (Subtle rise, smooth fall) */
+.card-text-shift {
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.group:hover .card-text-shift,
+.card-sports:hover .card-text-shift {
+  transform: translateY(-4px);
+}
+
+/* Arrow Slide Forward */
+.card-arrow-shift {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), color 250ms ease;
+  will-change: transform;
+}
+
+.group:hover .card-arrow-shift,
+.card-sports:hover .card-arrow-shift {
+  transform: translateX(4px);
+  color: #C59A3F;
+}
+
+/* Image Scroll Reveal State (0 -> 1 opacity, 0.97 -> 1 scale, 24px -> 0 translateY) */
+.scroll-image-reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-image-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-up,
+  .animate-fade-up-delay-1,
+  .animate-fade-up-delay-2,
+  .animate-scale-reveal,
+  .animate-scroll-bob,
+  .animate-draw-line,
+  .animate-page-enter,
+  .animate-hero-cinematic,
+  .animate-shake {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .btn-interactive:hover,
+  .btn-interactive:active,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .card-interactive:hover,
+  .card-sports:hover,
+  .card-text-shift,
+  .card-arrow-shift,
+  .scroll-image-reveal,
+  .img-unified,
+  .group:hover .img-interactive,
+  .group:hover .img-unified {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Touch helpers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle selection & scrollbar */
+::selection {
+  background-color: rgba(197, 154, 63, 0.25);
+  color: #131E18;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D4C8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9C988F;
+}
